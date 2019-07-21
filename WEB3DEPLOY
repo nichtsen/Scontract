@@ -8,3 +8,5 @@ eth.getCode(simplestorage.address)
 simplestorage.set(x)
 miner.start();admin.sleepBlocks(1);miner.stop();
 simplestorage.get()
+var othercaller = eth.contract(abi).at(simplestorage.address)
+othercaller.get()
