@@ -1,12 +1,19 @@
-var x = 1;eth.defaultAccount=eth.coinbase
+// without defaultAccount, contracts can not be deployed on block since someone need to pay for the gas
+eth.defaultAccount=eth.coinbase
+ 
 var abi = [{"constant":false,"inputs":[{"name":"x","type":"uint256"}],"name":"set","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"get","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}]
 var simplestorageContract = web3.eth.contract(abi);
 personal.unlockAccount(eth.accounts[0],"123")
-var simplestorage = simplestorageContract.new(x,{from:web3.eth.accounts[0],data:'0x608060405234801561001057600080fd5b5060e68061001f6000396000f3fe6080604052600436106043576000357c01000000000000000000000000000000000000000000000000000000009004806360fe47b11460485780636d4ce63c14607f575b600080fd5b348015605357600080fd5b50607d60048036036020811015606857600080fd5b810190808035906020019092919050505060a7565b005b348015608a57600080fd5b50609160b1565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea165627a7a7230582016d0e7f180bf1b26330ad9f2c553acd3c370905409cce8c1499e36fb657cce3d0029',gas:'800000'})
+var simplestorage = simplestorageContract.new({from:web3.eth.accounts[0],data:'0x608060405234801561001057600080fd5b5060e68061001f6000396000f3fe6080604052600436106043576000357c01000000000000000000000000000000000000000000000000000000009004806360fe47b11460485780636d4ce63c14607f575b600080fd5b348015605357600080fd5b50607d60048036036020811015606857600080fd5b810190808035906020019092919050505060a7565b005b348015608a57600080fd5b50609160b1565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea165627a7a7230582016d0e7f180bf1b26330ad9f2c553acd3c370905409cce8c1499e36fb657cce3d0029',gas:'800000'})
 miner.start();admin.sleepBlocks(1);miner.stop();
 eth.getCode(simplestorage.address)
-simplestorage.set(x)
+simplestorage.set(7)
 miner.start();admin.sleepBlocks(1);miner.stop();
 simplestorage.get()
-var othercaller = eth.contract(abi).at(simplestorage.address)
+
+// when someone else want to get an instance of this contract
+// var othercaller = eth.contract(abi).at(simplestorage.address)
+var othercaller = eth.contract([{"constant":false,"inputs":[{"name":"x","type":"uint256"}],"name":"set","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"get","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}]).at("0x3dfa2536eb5b6ae89da28514abe9448afa197b22")
 othercaller.get()
+
+exit

@@ -1,6 +1,17 @@
 geth --datadir "d:/eth/n0" init d:/eth/genesis.json
 geth --datadir "d:/eth/n0" --nodiscover console 2>>geth.log
 personal.newAccount("123")
-miner.start();admin.sleepBlocks(1);miner.stop()
-personal.unlockAccount(eth.accounts[0],"123")
-eth.sendTransaction({from: eth.accounts[0], to: eth.accounts[1], value: 1})
+//miner.start();admin.sleepBlocks(1);miner.stop()
+//personal.unlockAccount(eth.accounts[0],"123")
+//eth.sendTransaction({from: eth.accounts[0], to: eth.accounts[1], value: 1})
+// WEB3DEPLOY ......
+exit
+
+//Backup and Restore
+
+geth --datadir "d:/eth/n0" export chain.bak
+//Rebuild the genesis before import
+geth --datadir "d:/eth/n1" init d:/eth/genesis.json
+geth --datadir "d:/eth/n1" import chain.bak
+geth --datadir "d:/eth/n1" --nodiscover console 2>>geth.log
+exit
