@@ -14,7 +14,7 @@ contract MyCoin {
   
   function mint(address to, uint value) public {
       require(msg.sender == minter, "Only minter can mint!");
-      require(supply - value >= 0, "Supply will be run out!");
+      require(supply >= value, "Supply will be run out!");
       balances[to] += value;
       supply -= value;
   }
