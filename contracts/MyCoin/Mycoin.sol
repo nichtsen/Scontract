@@ -28,4 +28,16 @@ contract MyCoin {
   function checkMyBalance() public view returns (uint) {
       return balances[msg.sender];
   }
+  
+  function who() public view returns (address) {
+      return msg.sender;
+  }
+  
+  function checkAddr(address addr) public view returns (uint) {
+      return balances[addr];
+  } 
+  
+  function getInfo() public view returns (address, uint) {
+      return (minter, supply);
+  }
 }
