@@ -1,7 +1,7 @@
 #!/bin/bash
 
 geth --datadir "node1" init chains/MyCoin/genesis.json
-cp keystore/* node1/keystore/
+cp keystore/* node1/keystore
 
 # geth --datadir "node1" export MyCoin.bak
 # import pre-build chain
