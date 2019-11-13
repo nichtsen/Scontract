@@ -21,3 +21,4 @@ Compiler for simple contract
 [Truffle docs](https://www.trufflesuite.com/docs/truffle/overview)
 [Web3.js docs](https://web3js.readthedocs.io/en/v1.2.2/)
 [Solidity docs](https://solidity.readthedocs.io/en/latest/)
+[Remix docs](https://remix-ide.readthedocs.io/en/latest/)
