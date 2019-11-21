@@ -52,5 +52,6 @@ geth --datadir "node1" import chains/MyCoin/MyCoin.bak
 # JS console, "exit" to quit  
 geth --datadir "node1" --nodiscover --preload "contracts/MyCoin/deploy.js" console 2>> /dev/null
 
+# Issue 16307 
 # nohup geth --datadir "node1" --mine --miner.threads=1 --etherbase=0x0000000000000000000000000000000000000000 2>> miner.log &
 # geth --datadir "node1" --preload "contracts/MyCoin/deploy.js"  attach ipc:/root/Scontract/node1/geth.ipc 2>> /dev/null
