@@ -54,4 +54,6 @@ geth --datadir "node1" --nodiscover --preload "contracts/MyCoin/deploy.js" conso
 
 # Issue 16307 
 # nohup geth --datadir "node1" --mine --miner.threads=1 --etherbase=0x0000000000000000000000000000000000000000 2>> miner.log &
+# nopup geth --datadir "node1" --rpc --rpcaddr "0.0.0.0" -mine --miner.threads=1 --etherbase=0x0000000000000000000000000000000000000000 2>> miner.log &
+# geth --preload "builder.js" attach http://
 # geth --datadir "node1" --preload "contracts/MyCoin/deploy.js"  attach ipc:/root/Scontract/node1/geth.ipc 2>> /dev/null
