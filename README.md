@@ -10,7 +10,7 @@ chmod +x test.sh
 
 ## Miner
 In your private network, at least one node should be running as the miner.
-With `--miner` flag you can start a miner node;
+With `--mine` flag you can start a miner node;
 With `admin.addPeer()` method you can connect two nodes;
 Finally `admin.peers()` to check the current nodes in your networks 
 
